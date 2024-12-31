@@ -30,6 +30,3 @@ class BasePage:
         return WebDriverWait(self.driver, 30).until(
             EC.presence_of_element_located(locator)
         ).text
-    
-    def getElementsList(self, locator):
-        return self.driver.find_elements(*locator)

@@ -1,5 +1,5 @@
 from keywords.keywords import openBrowser, navigateTo, killBrowser
-from utilities.data_reader import read_json, read_excel
+from utilities.data_reader import read_json
 from utilities.logger import logger
 import pytest
 import time

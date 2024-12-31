@@ -6,10 +6,10 @@ import pytest
 config = read_json("D:\Selenium Practices\Week 6\config\config.json")
 
 testDataPath = config["test_data"]["file_path"]
-columnsRequired = config["test_data"]["columns_required"]
+testDataSheet = config["test_data"]["TC_1_sheet_name"]
 
 def getTestData():
-    return read_excel(testDataPath, columnsRequired)
+    return read_excel(testDataPath, testDataSheet)
     
 @pytest.mark.parametrize("tc_id, name, password, expected", getTestData())
 #Function for sending test data to the form

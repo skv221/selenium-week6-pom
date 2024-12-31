@@ -16,3 +16,6 @@ def killBrowser(driver):
     
 def xstr(s):
     return '' if s is None else str(s)
+
+def buttonId(s):
+    return s.lower().replace(" ","-")
