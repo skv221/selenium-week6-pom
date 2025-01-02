@@ -30,3 +30,8 @@ class BasePage:
         return WebDriverWait(self.driver, 30).until(
             EC.presence_of_element_located(locator)
         ).text
+    
+    def countOfElements(self, locator):
+        return len(WebDriverWait(self.driver, 10).until(
+            EC.presence_of_all_elements_located(locator)
+        ))

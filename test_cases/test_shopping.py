@@ -37,6 +37,7 @@ def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems,
             log.info("Adding required items to cart..")
             itemsToAdd = xstr(addItems).split(", ")
             itemsToRemove = xstr(removeItems).split(", ")
+            totalItems = len(itemsToAdd) - len(itemsToRemove)
             for item in itemsToAdd:
                 log.info("Adding "+ item +" to cart..")
                 shopping.addItem(item)
@@ -47,6 +48,10 @@ def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems,
                 log.info("Removing "+ item +" from cart..")
                 shopping.removeItem(item)
                 sleep(sleepTime)
+            log.info("Checking if all the required items are added and removed as expected...")
+            if not shopping.validateCartItems(totalItems):
+                log.error("Items in the cart doesn't match the expected items")
+                raise AssertionError("Shopping items mismatch")
             shopping.proceedToCheckout()
             log.info("Proceeding to checkout..")
             log.info("Entering form details..")
@@ -59,18 +64,21 @@ def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems,
                 log.error(shopping.getErrorText())
             try:
                 assert ExpectedAction == formResult
-                sleep(sleepTime)
-                shopping.finishShopping()
-                sleep(sleepTime)
-                shoppingResult = shopping.validateShopping()
-                if shoppingResult == "Pass":
-                    log.info("Shopping completed successfully...")
-                else:
-                    log.info("Shopping is hindered...")
-                    raise AssertionError("Expectation not met")
+                if formResult == "Pass":
+                    sleep(sleepTime)
+                    shopping.finishShopping()
+                    sleep(sleepTime)
+                    shoppingResult = shopping.validateShopping()
+                    if shoppingResult == "Pass":
+                        log.info("Shopping completed successfully...")
+                    else:
+                        log.error("Shopping is hindered...")
+                        raise AssertionError("Expectation not met")
             except Exception as e:
-                log.error("Something went wrong..."+ str(e))    
+                log.error("Something went wrong..."+ str(e))
+                pytest.fail(str(e))    
     except Exception as e:
         log.error("Something went wrong..."+ str(e))
+        pytest.fail(str(e))
     finally:
         log.info("Quitting the browser session...")

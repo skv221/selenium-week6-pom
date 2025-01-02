@@ -4,6 +4,7 @@ from keywords.keywords import buttonId
 
 class ShoppingPage(LoginPage):
     cart = (By.CLASS_NAME, "shopping_cart_link")
+    cartItem = (By.XPATH, "//div[@class='cart_item']")
     checkoutButton = (By.ID, "checkout")
         
     def addItem(self, item):
@@ -23,3 +24,6 @@ class ShoppingPage(LoginPage):
     
     def proceedToCheckout(self):
         self.clickElement(self.checkoutButton)
+        
+    def validateCartItems(self, totalElements):
+        return self.countOfElements(self.cartItem) == totalElements

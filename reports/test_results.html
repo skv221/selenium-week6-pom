@@ -253,7 +253,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>test_results.html</h1>
-    <p>Report generated on 31-Dec-2024 at 20:08:21 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 02-Jan-2025 at 21:46:40 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -269,8 +269,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.6.2</td></tr></table>
     <h2>Summary</h2>
-    <p>9 tests ran in 776.83 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">9 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>9 tests ran in 706.24 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">7 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">2 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -281,11 +281,61 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_3-problem_user-secret_sauce-Pass-Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt-Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt-John-Brown-62236-Pass]</td>
+          <td class="col-duration">121.90</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">setup_browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f6a9325737b30ae3d97e97764786110b&quot;)&gt;, log = &lt;Logger Login Test (DEBUG)&gt;, tc_id = &#x27;TC_3&#x27;<br/>name = &#x27;problem_user&#x27;, password = &#x27;secret_sauce&#x27;, expected = &#x27;Pass&#x27;, addItems = &#x27;Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt&#x27;<br/>removeItems = &#x27;Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt&#x27;, firstName = &#x27;John&#x27;, lastName = &#x27;Brown&#x27;, PostalCode = 62236, ExpectedAction = &#x27;Pass&#x27;<br/><br/>    @pytest.mark.parametrize(&quot;tc_id, name, password, expected, addItems, removeItems, firstName, lastName, PostalCode, ExpectedAction&quot;, getTestData())<br/>    def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems, removeItems, firstName, lastName, PostalCode, ExpectedAction):<br/>        log.info(&quot;Executing &quot;+ tc_id + &quot; with &quot; + xstr(name) + &quot; as username and &quot; + xstr(password) + &quot; as password...&quot; )<br/>        driver = setup_browser<br/>        log.info(&quot;Starting browser session...&quot;)<br/>        shopping = CheckoutPage(driver)<br/>        log.info(&quot;Entering login credentials...&quot;)<br/>        shopping.login(xstr(name), xstr(password))<br/>        sleep(sleepTime)<br/>    <br/>        log.info(&quot;Validating login...&quot;)<br/>        result = shopping.validatelogin()<br/>        if result == &quot;Pass&quot;:<br/>            log.info(&quot;Logged in successfully&quot;)<br/>        else:<br/>            log.error(shopping.getErrorText())<br/>        log.info(&quot;Login Check performed successfully...&quot;)<br/>        try:<br/>            assert expected == result<br/>            if result == &quot;Pass&quot;:<br/>                log.info(&quot;Adding required items to cart..&quot;)<br/>                itemsToAdd = xstr(addItems).split(&quot;, &quot;)<br/>                itemsToRemove = xstr(removeItems).split(&quot;, &quot;)<br/>                totalItems = len(itemsToAdd) - len(itemsToRemove)<br/>                for item in itemsToAdd:<br/>                    log.info(&quot;Adding &quot;+ item +&quot; to cart..&quot;)<br/>                    shopping.addItem(item)<br/>                    sleep(sleepTime)<br/>                log.info(&quot;Proceeding to cart..&quot;)<br/>                shopping.proceedToCart()<br/>                for item in itemsToRemove:<br/>                    log.info(&quot;Removing &quot;+ item +&quot; from cart..&quot;)<br/>                    shopping.removeItem(item)<br/>                    sleep(sleepTime)<br/>                log.info(&quot;Checking if all the required items are added and removed as expected...&quot;)<br/>&gt;               if not shopping.validateCartItems(totalItems):<br/><br/>test_cases\test_shopping.py:52: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;page_objects.CheckoutPage.CheckoutPage object at 0x000001D2CD62F908&gt;, totalElements = 0<br/><br/>    def validateCartItems(self, totalElements):<br/>&gt;       return self.countOfElements(self.cartItem) == totalElements<br/><br/>page_objects\ShoppingPage.py:29: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;page_objects.CheckoutPage.CheckoutPage object at 0x000001D2CD62F908&gt;, locator = (&#x27;xpath&#x27;, &quot;//div[@class=&#x27;cart_item&#x27;]&quot;)<br/><br/>    def countOfElements(self, locator):<br/>        return len(WebDriverWait(self.driver, 10).until(<br/>&gt;           EC.presence_of_all_elements_located(locator)<br/>        ))<br/><br/>page_objects\BasePage.py:36: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;f6a9325737b30ae3d97e97764786110b&quot;)&gt;<br/>method = &lt;selenium.webdriver.support.expected_conditions.presence_of_all_elements_located object at 0x000001D2CD644358&gt;, message = &#x27;&#x27;<br/><br/>    def until(self, method, message=&#x27;&#x27;):<br/>        &quot;&quot;&quot;Calls the method provided with the driver as an argument until the \<br/>        return value is not False.&quot;&quot;&quot;<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.time() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, &#x27;screen&#x27;, None)<br/>                stacktrace = getattr(exc, &#x27;stacktrace&#x27;, None)<br/>            time.sleep(self._poll)<br/>            if time.time() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.TimeoutException: Message:</span><br/><br/>c:\users\jarvis\appdata\local\programs\python\python36\lib\site-packages\selenium\webdriver\support\wait.py:80: TimeoutException<br/><br/>During handling of the above exception, another exception occurred:<br/><br/>setup_browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f6a9325737b30ae3d97e97764786110b&quot;)&gt;, log = &lt;Logger Login Test (DEBUG)&gt;, tc_id = &#x27;TC_3&#x27;<br/>name = &#x27;problem_user&#x27;, password = &#x27;secret_sauce&#x27;, expected = &#x27;Pass&#x27;, addItems = &#x27;Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt&#x27;<br/>removeItems = &#x27;Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt&#x27;, firstName = &#x27;John&#x27;, lastName = &#x27;Brown&#x27;, PostalCode = 62236, ExpectedAction = &#x27;Pass&#x27;<br/><br/>    @pytest.mark.parametrize(&quot;tc_id, name, password, expected, addItems, removeItems, firstName, lastName, PostalCode, ExpectedAction&quot;, getTestData())<br/>    def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems, removeItems, firstName, lastName, PostalCode, ExpectedAction):<br/>        log.info(&quot;Executing &quot;+ tc_id + &quot; with &quot; + xstr(name) + &quot; as username and &quot; + xstr(password) + &quot; as password...&quot; )<br/>        driver = setup_browser<br/>        log.info(&quot;Starting browser session...&quot;)<br/>        shopping = CheckoutPage(driver)<br/>        log.info(&quot;Entering login credentials...&quot;)<br/>        shopping.login(xstr(name), xstr(password))<br/>        sleep(sleepTime)<br/>    <br/>        log.info(&quot;Validating login...&quot;)<br/>        result = shopping.validatelogin()<br/>        if result == &quot;Pass&quot;:<br/>            log.info(&quot;Logged in successfully&quot;)<br/>        else:<br/>            log.error(shopping.getErrorText())<br/>        log.info(&quot;Login Check performed successfully...&quot;)<br/>        try:<br/>            assert expected == result<br/>            if result == &quot;Pass&quot;:<br/>                log.info(&quot;Adding required items to cart..&quot;)<br/>                itemsToAdd = xstr(addItems).split(&quot;, &quot;)<br/>                itemsToRemove = xstr(removeItems).split(&quot;, &quot;)<br/>                totalItems = len(itemsToAdd) - len(itemsToRemove)<br/>                for item in itemsToAdd:<br/>                    log.info(&quot;Adding &quot;+ item +&quot; to cart..&quot;)<br/>                    shopping.addItem(item)<br/>                    sleep(sleepTime)<br/>                log.info(&quot;Proceeding to cart..&quot;)<br/>                shopping.proceedToCart()<br/>                for item in itemsToRemove:<br/>                    log.info(&quot;Removing &quot;+ item +&quot; from cart..&quot;)<br/>                    shopping.removeItem(item)<br/>                    sleep(sleepTime)<br/>                log.info(&quot;Checking if all the required items are added and removed as expected...&quot;)<br/>                if not shopping.validateCartItems(totalItems):<br/>                    log.error(&quot;Items in the cart doesn&#x27;t match the expected items&quot;)<br/>                    raise AssertionError(&quot;Shopping items mismatch&quot;)<br/>                shopping.proceedToCheckout()<br/>                log.info(&quot;Proceeding to checkout..&quot;)<br/>                log.info(&quot;Entering form details..&quot;)<br/>                sleep(sleepTime)<br/>                shopping.formSubmit(xstr(firstName), xstr(lastName), xstr(PostalCode))<br/>                formResult = shopping.validateForm()<br/>                if formResult == &quot;Pass&quot;:<br/>                    log.info(&quot;Completing the transaction...&quot;)<br/>                else:<br/>                    log.error(shopping.getErrorText())<br/>                try:<br/>                    assert ExpectedAction == formResult<br/>                    if formResult == &quot;Pass&quot;:<br/>                        sleep(sleepTime)<br/>                        shopping.finishShopping()<br/>                        sleep(sleepTime)<br/>                        shoppingResult = shopping.validateShopping()<br/>                        if shoppingResult == &quot;Pass&quot;:<br/>                            log.info(&quot;Shopping completed successfully...&quot;)<br/>                        else:<br/>                            log.error(&quot;Shopping is hindered...&quot;)<br/>                            raise AssertionError(&quot;Expectation not met&quot;)<br/>                except Exception as e:<br/>                    log.error(&quot;Something went wrong...&quot;+ str(e))<br/>                    pytest.fail(str(e))<br/>        except Exception as e:<br/>            log.error(&quot;Something went wrong...&quot;+ str(e))<br/>&gt;           pytest.fail(str(e))<br/><span class="error">E           Failed: Message:</span><br/><br/>test_cases\test_shopping.py:82: Failed<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     Login Test:test_shopping.py:19 Executing TC_3 with problem_user as username and secret_sauce as password...
+INFO     Login Test:test_shopping.py:21 Starting browser session...
+INFO     Login Test:test_shopping.py:23 Entering login credentials...
+INFO     Login Test:test_shopping.py:27 Validating login...
+INFO     Login Test:test_shopping.py:30 Logged in successfully
+INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
+INFO     Login Test:test_shopping.py:37 Adding required items to cart..
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Fleece Jacket to cart..
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Bolt T-Shirt to cart..
+INFO     Login Test:test_shopping.py:45 Proceeding to cart..
+INFO     Login Test:test_shopping.py:48 Removing Sauce Labs Fleece Jacket from cart..
+INFO     Login Test:test_shopping.py:48 Removing Sauce Labs Bolt T-Shirt from cart..
+INFO     Login Test:test_shopping.py:51 Checking if all the required items are added and removed as expected...
+ERROR    Login Test:test_shopping.py:81 Something went wrong...Message: 
+
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_5-error_user-secret_sauce-Pass-Test.allTheThings() T-Shirt (Red), Sauce Labs Onesie-None-Alex-Smith-24309-Pass]</td>
+          <td class="col-duration">117.61</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">setup_browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;10dbba15c241413abb7d332aec10338e&quot;)&gt;, log = &lt;Logger Login Test (DEBUG)&gt;, tc_id = &#x27;TC_5&#x27;<br/>name = &#x27;error_user&#x27;, password = &#x27;secret_sauce&#x27;, expected = &#x27;Pass&#x27;, addItems = &#x27;Test.allTheThings() T-Shirt (Red), Sauce Labs Onesie&#x27;, removeItems = None, firstName = &#x27;Alex&#x27;<br/>lastName = &#x27;Smith&#x27;, PostalCode = 24309, ExpectedAction = &#x27;Pass&#x27;<br/><br/>    @pytest.mark.parametrize(&quot;tc_id, name, password, expected, addItems, removeItems, firstName, lastName, PostalCode, ExpectedAction&quot;, getTestData())<br/>    def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems, removeItems, firstName, lastName, PostalCode, ExpectedAction):<br/>        log.info(&quot;Executing &quot;+ tc_id + &quot; with &quot; + xstr(name) + &quot; as username and &quot; + xstr(password) + &quot; as password...&quot; )<br/>        driver = setup_browser<br/>        log.info(&quot;Starting browser session...&quot;)<br/>        shopping = CheckoutPage(driver)<br/>        log.info(&quot;Entering login credentials...&quot;)<br/>        shopping.login(xstr(name), xstr(password))<br/>        sleep(sleepTime)<br/>    <br/>        log.info(&quot;Validating login...&quot;)<br/>        result = shopping.validatelogin()<br/>        if result == &quot;Pass&quot;:<br/>            log.info(&quot;Logged in successfully&quot;)<br/>        else:<br/>            log.error(shopping.getErrorText())<br/>        log.info(&quot;Login Check performed successfully...&quot;)<br/>        try:<br/>            assert expected == result<br/>            if result == &quot;Pass&quot;:<br/>                log.info(&quot;Adding required items to cart..&quot;)<br/>                itemsToAdd = xstr(addItems).split(&quot;, &quot;)<br/>                itemsToRemove = xstr(removeItems).split(&quot;, &quot;)<br/>                totalItems = len(itemsToAdd) - len(itemsToRemove)<br/>                for item in itemsToAdd:<br/>                    log.info(&quot;Adding &quot;+ item +&quot; to cart..&quot;)<br/>                    shopping.addItem(item)<br/>                    sleep(sleepTime)<br/>                log.info(&quot;Proceeding to cart..&quot;)<br/>                shopping.proceedToCart()<br/>                for item in itemsToRemove:<br/>                    log.info(&quot;Removing &quot;+ item +&quot; from cart..&quot;)<br/>                    shopping.removeItem(item)<br/>                    sleep(sleepTime)<br/>                log.info(&quot;Checking if all the required items are added and removed as expected...&quot;)<br/>                if not shopping.validateCartItems(totalItems):<br/>                    log.error(&quot;Items in the cart doesn&#x27;t match the expected items&quot;)<br/>                    raise AssertionError(&quot;Shopping items mismatch&quot;)<br/>                shopping.proceedToCheckout()<br/>                log.info(&quot;Proceeding to checkout..&quot;)<br/>                log.info(&quot;Entering form details..&quot;)<br/>                sleep(sleepTime)<br/>                shopping.formSubmit(xstr(firstName), xstr(lastName), xstr(PostalCode))<br/>                formResult = shopping.validateForm()<br/>                if formResult == &quot;Pass&quot;:<br/>                    log.info(&quot;Completing the transaction...&quot;)<br/>                else:<br/>                    log.error(shopping.getErrorText())<br/>                try:<br/>                    assert ExpectedAction == formResult<br/>                    if formResult == &quot;Pass&quot;:<br/>                        sleep(sleepTime)<br/>                        shopping.finishShopping()<br/>                        sleep(sleepTime)<br/>                        shoppingResult = shopping.validateShopping()<br/>                        if shoppingResult == &quot;Pass&quot;:<br/>                            log.info(&quot;Shopping completed successfully...&quot;)<br/>                        else:<br/>                            log.error(&quot;Shopping is hindered...&quot;)<br/>&gt;                           raise AssertionError(&quot;Expectation not met&quot;)<br/><span class="error">E                           AssertionError: Expectation not met</span><br/><br/>test_cases\test_shopping.py:76: AssertionError<br/><br/>During handling of the above exception, another exception occurred:<br/><br/>setup_browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;10dbba15c241413abb7d332aec10338e&quot;)&gt;, log = &lt;Logger Login Test (DEBUG)&gt;, tc_id = &#x27;TC_5&#x27;<br/>name = &#x27;error_user&#x27;, password = &#x27;secret_sauce&#x27;, expected = &#x27;Pass&#x27;, addItems = &#x27;Test.allTheThings() T-Shirt (Red), Sauce Labs Onesie&#x27;, removeItems = None, firstName = &#x27;Alex&#x27;<br/>lastName = &#x27;Smith&#x27;, PostalCode = 24309, ExpectedAction = &#x27;Pass&#x27;<br/><br/>    @pytest.mark.parametrize(&quot;tc_id, name, password, expected, addItems, removeItems, firstName, lastName, PostalCode, ExpectedAction&quot;, getTestData())<br/>    def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems, removeItems, firstName, lastName, PostalCode, ExpectedAction):<br/>        log.info(&quot;Executing &quot;+ tc_id + &quot; with &quot; + xstr(name) + &quot; as username and &quot; + xstr(password) + &quot; as password...&quot; )<br/>        driver = setup_browser<br/>        log.info(&quot;Starting browser session...&quot;)<br/>        shopping = CheckoutPage(driver)<br/>        log.info(&quot;Entering login credentials...&quot;)<br/>        shopping.login(xstr(name), xstr(password))<br/>        sleep(sleepTime)<br/>    <br/>        log.info(&quot;Validating login...&quot;)<br/>        result = shopping.validatelogin()<br/>        if result == &quot;Pass&quot;:<br/>            log.info(&quot;Logged in successfully&quot;)<br/>        else:<br/>            log.error(shopping.getErrorText())<br/>        log.info(&quot;Login Check performed successfully...&quot;)<br/>        try:<br/>            assert expected == result<br/>            if result == &quot;Pass&quot;:<br/>                log.info(&quot;Adding required items to cart..&quot;)<br/>                itemsToAdd = xstr(addItems).split(&quot;, &quot;)<br/>                itemsToRemove = xstr(removeItems).split(&quot;, &quot;)<br/>                totalItems = len(itemsToAdd) - len(itemsToRemove)<br/>                for item in itemsToAdd:<br/>                    log.info(&quot;Adding &quot;+ item +&quot; to cart..&quot;)<br/>                    shopping.addItem(item)<br/>                    sleep(sleepTime)<br/>                log.info(&quot;Proceeding to cart..&quot;)<br/>                shopping.proceedToCart()<br/>                for item in itemsToRemove:<br/>                    log.info(&quot;Removing &quot;+ item +&quot; from cart..&quot;)<br/>                    shopping.removeItem(item)<br/>                    sleep(sleepTime)<br/>                log.info(&quot;Checking if all the required items are added and removed as expected...&quot;)<br/>                if not shopping.validateCartItems(totalItems):<br/>                    log.error(&quot;Items in the cart doesn&#x27;t match the expected items&quot;)<br/>                    raise AssertionError(&quot;Shopping items mismatch&quot;)<br/>                shopping.proceedToCheckout()<br/>                log.info(&quot;Proceeding to checkout..&quot;)<br/>                log.info(&quot;Entering form details..&quot;)<br/>                sleep(sleepTime)<br/>                shopping.formSubmit(xstr(firstName), xstr(lastName), xstr(PostalCode))<br/>                formResult = shopping.validateForm()<br/>                if formResult == &quot;Pass&quot;:<br/>                    log.info(&quot;Completing the transaction...&quot;)<br/>                else:<br/>                    log.error(shopping.getErrorText())<br/>                try:<br/>                    assert ExpectedAction == formResult<br/>                    if formResult == &quot;Pass&quot;:<br/>                        sleep(sleepTime)<br/>                        shopping.finishShopping()<br/>                        sleep(sleepTime)<br/>                        shoppingResult = shopping.validateShopping()<br/>                        if shoppingResult == &quot;Pass&quot;:<br/>                            log.info(&quot;Shopping completed successfully...&quot;)<br/>                        else:<br/>                            log.error(&quot;Shopping is hindered...&quot;)<br/>                            raise AssertionError(&quot;Expectation not met&quot;)<br/>                except Exception as e:<br/>                    log.error(&quot;Something went wrong...&quot;+ str(e))<br/>&gt;                   pytest.fail(str(e))<br/><span class="error">E                   Failed: Expectation not met</span><br/><br/>test_cases\test_shopping.py:79: Failed<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     Login Test:test_shopping.py:19 Executing TC_5 with error_user as username and secret_sauce as password...
+INFO     Login Test:test_shopping.py:21 Starting browser session...
+INFO     Login Test:test_shopping.py:23 Entering login credentials...
+INFO     Login Test:test_shopping.py:27 Validating login...
+INFO     Login Test:test_shopping.py:30 Logged in successfully
+INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
+INFO     Login Test:test_shopping.py:37 Adding required items to cart..
+INFO     Login Test:test_shopping.py:42 Adding Test.allTheThings() T-Shirt (Red) to cart..
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Onesie to cart..
+INFO     Login Test:test_shopping.py:45 Proceeding to cart..
+INFO     Login Test:test_shopping.py:48 Removing  from cart..
+INFO     Login Test:test_shopping.py:51 Checking if all the required items are added and removed as expected...
+INFO     Login Test:test_shopping.py:56 Proceeding to checkout..
+INFO     Login Test:test_shopping.py:57 Entering form details..
+INFO     Login Test:test_shopping.py:62 Completing the transaction...
+ERROR    Login Test:test_shopping.py:75 Shopping is hindered...
+ERROR    Login Test:test_shopping.py:78 Something went wrong...Expectation not met
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_1-standard_user-secret_sauce-Pass-Sauce Labs Onesie, Sauce Labs Backpack, Sauce Labs Bolt T-Shirt-Sauce Labs Backpack-Alex-Garcia-14182-Pass]</td>
-          <td class="col-duration">57.77</td>
+          <td class="col-duration">59.86</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -296,21 +346,22 @@ INFO     Login Test:test_shopping.py:27 Validating login...
 INFO     Login Test:test_shopping.py:30 Logged in successfully
 INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
 INFO     Login Test:test_shopping.py:37 Adding required items to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Onesie to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Backpack to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Bolt T-Shirt to cart..
-INFO     Login Test:test_shopping.py:44 Proceeding to cart..
-INFO     Login Test:test_shopping.py:47 Removing Sauce Labs Backpack from cart..
-INFO     Login Test:test_shopping.py:51 Proceeding to checkout..
-INFO     Login Test:test_shopping.py:52 Entering form details..
-INFO     Login Test:test_shopping.py:57 Completing the transaction...
-INFO     Login Test:test_shopping.py:67 Shopping completed successfully...
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody>
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Onesie to cart..
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Backpack to cart..
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Bolt T-Shirt to cart..
+INFO     Login Test:test_shopping.py:45 Proceeding to cart..
+INFO     Login Test:test_shopping.py:48 Removing Sauce Labs Backpack from cart..
+INFO     Login Test:test_shopping.py:51 Checking if all the required items are added and removed as expected...
+INFO     Login Test:test_shopping.py:56 Proceeding to checkout..
+INFO     Login Test:test_shopping.py:57 Entering form details..
+INFO     Login Test:test_shopping.py:62 Completing the transaction...
+INFO     Login Test:test_shopping.py:73 Shopping completed successfully...
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_2-locked_out_user-secret_sauce-Fail-Sauce Labs Bike Light, Sauce Labs Bolt T-Shirt-Sauce Labs Bike Light-Morgan-Lopez-17866-Pass]</td>
-          <td class="col-duration">67.23</td>
+          <td class="col-duration">67.74</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -320,39 +371,12 @@ INFO     Login Test:test_shopping.py:23 Entering login credentials...
 INFO     Login Test:test_shopping.py:27 Validating login...
 ERROR    Login Test:test_shopping.py:32 Epic sadface: Sorry, this user has been locked out.
 INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_3-problem_user-secret_sauce-Pass-Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt-Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt-John-Brown-62236-Pass]</td>
-          <td class="col-duration">146.34</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     Login Test:test_shopping.py:19 Executing TC_3 with problem_user as username and secret_sauce as password...
-INFO     Login Test:test_shopping.py:21 Starting browser session...
-INFO     Login Test:test_shopping.py:23 Entering login credentials...
-INFO     Login Test:test_shopping.py:27 Validating login...
-INFO     Login Test:test_shopping.py:30 Logged in successfully
-INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
-INFO     Login Test:test_shopping.py:37 Adding required items to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Fleece Jacket to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Bolt T-Shirt to cart..
-INFO     Login Test:test_shopping.py:44 Proceeding to cart..
-INFO     Login Test:test_shopping.py:47 Removing Sauce Labs Fleece Jacket from cart..
-INFO     Login Test:test_shopping.py:47 Removing Sauce Labs Bolt T-Shirt from cart..
-INFO     Login Test:test_shopping.py:51 Proceeding to checkout..
-INFO     Login Test:test_shopping.py:52 Entering form details..
-ERROR    Login Test:test_shopping.py:59 Error: Last Name is required
-ERROR    Login Test:test_shopping.py:72 Something went wrong...assert &#x27;Pass&#x27; == &#x27;Fail&#x27;
-  - Fail
-  + Pass
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody>
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_4-performance_glitch_user-secret_sauce-Pass-Sauce Labs Backpack, Sauce Labs Onesie, Test.allTheThings() T-Shirt (Red)-Sauce Labs Backpack-Morgan-Martinez-30240-Pass]</td>
-          <td class="col-duration">68.04</td>
+          <td class="col-duration">62.51</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -363,46 +387,22 @@ INFO     Login Test:test_shopping.py:27 Validating login...
 INFO     Login Test:test_shopping.py:30 Logged in successfully
 INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
 INFO     Login Test:test_shopping.py:37 Adding required items to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Backpack to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Onesie to cart..
-INFO     Login Test:test_shopping.py:41 Adding Test.allTheThings() T-Shirt (Red) to cart..
-INFO     Login Test:test_shopping.py:44 Proceeding to cart..
-INFO     Login Test:test_shopping.py:47 Removing Sauce Labs Backpack from cart..
-INFO     Login Test:test_shopping.py:51 Proceeding to checkout..
-INFO     Login Test:test_shopping.py:52 Entering form details..
-INFO     Login Test:test_shopping.py:57 Completing the transaction...
-INFO     Login Test:test_shopping.py:67 Shopping completed successfully...
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_5-error_user-secret_sauce-Pass-Test.allTheThings() T-Shirt (Red), Sauce Labs Onesie-None-Alex-Smith-24309-Pass]</td>
-          <td class="col-duration">121.27</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     Login Test:test_shopping.py:19 Executing TC_5 with error_user as username and secret_sauce as password...
-INFO     Login Test:test_shopping.py:21 Starting browser session...
-INFO     Login Test:test_shopping.py:23 Entering login credentials...
-INFO     Login Test:test_shopping.py:27 Validating login...
-INFO     Login Test:test_shopping.py:30 Logged in successfully
-INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
-INFO     Login Test:test_shopping.py:37 Adding required items to cart..
-INFO     Login Test:test_shopping.py:41 Adding Test.allTheThings() T-Shirt (Red) to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Onesie to cart..
-INFO     Login Test:test_shopping.py:44 Proceeding to cart..
-INFO     Login Test:test_shopping.py:47 Removing  from cart..
-INFO     Login Test:test_shopping.py:51 Proceeding to checkout..
-INFO     Login Test:test_shopping.py:52 Entering form details..
-INFO     Login Test:test_shopping.py:57 Completing the transaction...
-INFO     Login Test:test_shopping.py:69 Shopping is hindered...
-ERROR    Login Test:test_shopping.py:72 Something went wrong...Expectation not met
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody>
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Backpack to cart..
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Onesie to cart..
+INFO     Login Test:test_shopping.py:42 Adding Test.allTheThings() T-Shirt (Red) to cart..
+INFO     Login Test:test_shopping.py:45 Proceeding to cart..
+INFO     Login Test:test_shopping.py:48 Removing Sauce Labs Backpack from cart..
+INFO     Login Test:test_shopping.py:51 Checking if all the required items are added and removed as expected...
+INFO     Login Test:test_shopping.py:56 Proceeding to checkout..
+INFO     Login Test:test_shopping.py:57 Entering form details..
+INFO     Login Test:test_shopping.py:62 Completing the transaction...
+INFO     Login Test:test_shopping.py:73 Shopping completed successfully...
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_6-visual_user-None-Fail-Sauce Labs Onesie, Sauce Labs Bike Light, Test.allTheThings() T-Shirt (Red)-None-Jordan-Smith-87034-Pass]</td>
-          <td class="col-duration">68.09</td>
+          <td class="col-duration">66.79</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -412,12 +412,12 @@ INFO     Login Test:test_shopping.py:23 Entering login credentials...
 INFO     Login Test:test_shopping.py:27 Validating login...
 ERROR    Login Test:test_shopping.py:32 Epic sadface: Password is required
 INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody>
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_7-visual_user-secret_sauce-Pass-Sauce Labs Bolt T-Shirt, Test.allTheThings() T-Shirt (Red), Sauce Labs Onesie-Test.allTheThings() T-Shirt (Red)-Morgan-Davis-85223-Pass]</td>
-          <td class="col-duration">57.74</td>
+          <td class="col-duration">57.63</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -428,21 +428,22 @@ INFO     Login Test:test_shopping.py:27 Validating login...
 INFO     Login Test:test_shopping.py:30 Logged in successfully
 INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
 INFO     Login Test:test_shopping.py:37 Adding required items to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Bolt T-Shirt to cart..
-INFO     Login Test:test_shopping.py:41 Adding Test.allTheThings() T-Shirt (Red) to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Onesie to cart..
-INFO     Login Test:test_shopping.py:44 Proceeding to cart..
-INFO     Login Test:test_shopping.py:47 Removing Test.allTheThings() T-Shirt (Red) from cart..
-INFO     Login Test:test_shopping.py:51 Proceeding to checkout..
-INFO     Login Test:test_shopping.py:52 Entering form details..
-INFO     Login Test:test_shopping.py:57 Completing the transaction...
-INFO     Login Test:test_shopping.py:67 Shopping completed successfully...
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody>
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Bolt T-Shirt to cart..
+INFO     Login Test:test_shopping.py:42 Adding Test.allTheThings() T-Shirt (Red) to cart..
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Onesie to cart..
+INFO     Login Test:test_shopping.py:45 Proceeding to cart..
+INFO     Login Test:test_shopping.py:48 Removing Test.allTheThings() T-Shirt (Red) from cart..
+INFO     Login Test:test_shopping.py:51 Checking if all the required items are added and removed as expected...
+INFO     Login Test:test_shopping.py:56 Proceeding to checkout..
+INFO     Login Test:test_shopping.py:57 Entering form details..
+INFO     Login Test:test_shopping.py:62 Completing the transaction...
+INFO     Login Test:test_shopping.py:73 Shopping completed successfully...
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_8-standard_user-secret_sauce-Pass-Sauce Labs Bolt T-Shirt, Test.allTheThings() T-Shirt (Red), Sauce Labs Backpack-Test.allTheThings() T-Shirt (Red)-John-None-31103-Fail]</td>
-          <td class="col-duration">122.29</td>
+          <td class="col-duration">83.60</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -453,22 +454,21 @@ INFO     Login Test:test_shopping.py:27 Validating login...
 INFO     Login Test:test_shopping.py:30 Logged in successfully
 INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
 INFO     Login Test:test_shopping.py:37 Adding required items to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Bolt T-Shirt to cart..
-INFO     Login Test:test_shopping.py:41 Adding Test.allTheThings() T-Shirt (Red) to cart..
-INFO     Login Test:test_shopping.py:41 Adding Sauce Labs Backpack to cart..
-INFO     Login Test:test_shopping.py:44 Proceeding to cart..
-INFO     Login Test:test_shopping.py:47 Removing Test.allTheThings() T-Shirt (Red) from cart..
-INFO     Login Test:test_shopping.py:51 Proceeding to checkout..
-INFO     Login Test:test_shopping.py:52 Entering form details..
-ERROR    Login Test:test_shopping.py:59 Error: Last Name is required
-ERROR    Login Test:test_shopping.py:72 Something went wrong...Message: 
-
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody>
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Bolt T-Shirt to cart..
+INFO     Login Test:test_shopping.py:42 Adding Test.allTheThings() T-Shirt (Red) to cart..
+INFO     Login Test:test_shopping.py:42 Adding Sauce Labs Backpack to cart..
+INFO     Login Test:test_shopping.py:45 Proceeding to cart..
+INFO     Login Test:test_shopping.py:48 Removing Test.allTheThings() T-Shirt (Red) from cart..
+INFO     Login Test:test_shopping.py:51 Checking if all the required items are added and removed as expected...
+INFO     Login Test:test_shopping.py:56 Proceeding to checkout..
+INFO     Login Test:test_shopping.py:57 Entering form details..
+ERROR    Login Test:test_shopping.py:64 Error: Last Name is required
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_cases/test_shopping.py::test_shopping[TC_9-None-secret_sauce-Fail-Sauce Labs Fleece Jacket, Sauce Labs Bike Light, Sauce Labs Bolt T-Shirt-Sauce Labs Bike Light, Sauce Labs Bolt T-Shirt-None-Williams-73038-Fail]</td>
-          <td class="col-duration">67.85</td>
+          <td class="col-duration">68.39</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -478,4 +478,4 @@ INFO     Login Test:test_shopping.py:23 Entering login credentials...
 INFO     Login Test:test_shopping.py:27 Validating login...
 ERROR    Login Test:test_shopping.py:32 Epic sadface: Username is required
 INFO     Login Test:test_shopping.py:33 Login Check performed successfully...
-INFO     Login Test:test_shopping.py:76 Quitting the browser session...<br/></div></td></tr></tbody></table></body></html>
+INFO     Login Test:test_shopping.py:84 Quitting the browser session...<br/></div></td></tr></tbody></table></body></html>
