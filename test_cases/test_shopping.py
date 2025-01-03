@@ -22,8 +22,7 @@ def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems,
     shopping = CheckoutPage(driver)
     log.info("Entering login credentials...")
     shopping.login(xstr(name), xstr(password))
-    sleep(sleepTime)
-    
+    sleep(sleepTime)    
     log.info("Validating login...")
     result = shopping.validatelogin()
     if result == "Pass":
@@ -39,19 +38,19 @@ def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems,
             itemsToRemove = xstr(removeItems).split(", ")
             totalItems = len(itemsToAdd) - len(itemsToRemove)
             for item in itemsToAdd:
+                sleep(sleepTime)
                 log.info("Adding "+ item +" to cart..")
                 shopping.addItem(item)
-                sleep(sleepTime)
             log.info("Proceeding to cart..")
             shopping.proceedToCart()
             for item in itemsToRemove:
+                sleep(sleepTime)
                 log.info("Removing "+ item +" from cart..")
                 shopping.removeItem(item)
-                sleep(sleepTime)
             log.info("Checking if all the required items are added and removed as expected...")
             if not shopping.validateCartItems(totalItems):
                 log.error("Items in the cart doesn't match the expected items")
-                raise AssertionError("Shopping items mismatch")
+                raise AssertionError("The shopping items do not match the expected list...")
             shopping.proceedToCheckout()
             log.info("Proceeding to checkout..")
             log.info("Entering form details..")
@@ -72,13 +71,13 @@ def test_shopping(setup_browser, log, tc_id, name, password, expected, addItems,
                     if shoppingResult == "Pass":
                         log.info("Shopping completed successfully...")
                     else:
-                        log.error("Shopping is hindered...")
-                        raise AssertionError("Expectation not met")
+                        log.error("Shopping is terminated...")
+                        raise AssertionError("The expected outcome was not achieved")
             except Exception as e:
-                log.error("Something went wrong..."+ str(e))
+                log.error("The process did not complete as expected..."+ str(e))
                 pytest.fail(str(e))    
     except Exception as e:
-        log.error("Something went wrong..."+ str(e))
+        log.error("An error was encountered during the process..."+ str(e))
         pytest.fail(str(e))
     finally:
         log.info("Quitting the browser session...")
